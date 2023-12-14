@@ -1,5 +1,14 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
+# configure.ac
+AM_INIT_AUTOMAKE([
+    -Wall
+    1.12.2
+    foreign
+])
+AC_PREREQ([2.69])
+AC_INIT([powertop], [2.15], [powertop@lists.01.org], [], [https://github.com/fenrus75/powertop])
+
 
 AC_PREREQ([2.69])
 AC_INIT([powertop], [2.15], [powertop@lists.01.org], [], [https://github.com/fenrus75/powertop])
