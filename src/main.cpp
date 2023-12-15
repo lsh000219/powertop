@@ -47,8 +47,7 @@
 #include "perf/perf_bundle.h"
 #include "lib.h"
 #include "../config.h"
-#include "instruction.h"
-#include "instructiontab.cpp"
+#include "instruction/instruction.h"
 
 #include "devices/device.h"
 #include "devices/devfreq.h"
