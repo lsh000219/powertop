@@ -9,7 +9,7 @@
 #include "../report/report.h"
 #include "../report/report-maker.h"
 #include "../report/report-data-html"
-
+#include "instruction.h"
 // instruction_all 벡터 정의
 // std::vector<std::string> instruction_all;
 //
