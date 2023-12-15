@@ -132,6 +132,8 @@ powertop_SOURCES = \
 	wakeup/wakeup_usb.h \
 	wakeup/wakeup.h \
 	wakeup/wakeup_ethernet.h
+        instruction/instruction.h \
+	instruction/instructiontab.cpp
 
 powertop_CXXFLAGS = \
 	-Wall \
