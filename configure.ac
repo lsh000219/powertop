@@ -2,6 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 # configure.ac
 
+m4_pattern_allow([AC_MSG_ERROR])
+
 AC_PREREQ([2.69])
 AC_INIT([powertop], [2.15], [powertop@lists.01.org], [], [https://github.com/fenrus75/powertop])
 AM_INIT_AUTOMAKE([
