@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "display.h"
 
 struct Instruction {
     std::string command;
