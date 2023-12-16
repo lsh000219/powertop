@@ -71,6 +71,7 @@ void init_display(void)
 	create_tab("Idle stats", _("Idle stats"));
 	create_tab("Frequency stats", _("Frequency stats"));
 	create_tab("Device stats", _("Device stats"));
+	create_tab("Instructions", _("Instructions"));
 
 	display = 1;
 }
