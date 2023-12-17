@@ -5,6 +5,16 @@
 #include <string>
 #include <ncurses.h>
 
+class instruction_window* inst_window;
+
+class instruction_window : public tab_window {
+public:
+    virtual void repaint(void);
+    virtual void cursor_enter(void);
+    virtual void expose(void);
+    virtual void window_refresh(void);
+};
+
 void init_instruction(void)
 {
 	instruction_update_display();
@@ -63,6 +73,10 @@ void instruction_update_display(void)
 	if (!w)
 		return;
 	w->repaint();
+}
+
+void instruction_window::repaint(void) {
+    __instruction_update_display();
 }
 
 extern vector<class Instruction *> instruction_all;
