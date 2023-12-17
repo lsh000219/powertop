@@ -279,6 +279,7 @@ void one_measurement(int seconds, int sample_interval, char *workload)
 	show_report_devices();
 	report_show_open_devices();
 
+	initialize_instruction();
 	report_devices();
 	display_devfreq_devices();
 	report_devfreq_devices();
