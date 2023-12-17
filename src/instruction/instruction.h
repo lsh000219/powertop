@@ -18,6 +18,6 @@ extern vector<class Instruction *> instruction_all;
 class Instruction {
 public:
     char desc[4096];
-}
+};
 
 #endif
