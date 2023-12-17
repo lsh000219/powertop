@@ -5,7 +5,7 @@
 #include <string>
 #include <ncurses.h>
 
-static void init_instruction(void);
+void init_instruction(void);
 
 extern void initialize_instruction(void);
 
@@ -19,11 +19,6 @@ class Instruction;
 class Instruction {
 public:
 	char desc[4096];
-
-	Instruction(const char *desc)
-	{
-		strcpy(this->desc, desc);
-	}
 };
 
 class instruction_window* inst_window;

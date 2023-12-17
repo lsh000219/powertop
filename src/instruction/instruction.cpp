@@ -24,7 +24,7 @@ public:
 	virtual void window_refresh(void);
 };
 
-static void init_instruction(void) {                                           
+void init_instruction(void) {                                           
 	instruction_update_display();
 }
 
