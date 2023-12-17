@@ -180,9 +180,10 @@ WINDOW *get_ncurses_win(const char *name)
 	if (!w)
 		return NULL;
 
-	if(w = "Instructions")
+	if(w == "Instructions")
 	{
-		win = instructionText;
+		werase(w->win);
+		wprintw(w->win, "%s", instructionText);
 	}
 	else
 	{
@@ -200,9 +201,10 @@ WINDOW *get_ncurses_win(int nr)
 	if (!w)
 		return NULL;
 
-	if(w = "Instructions")
+	if(w == "Instructions")
         {
-                win = instructionText;
+                werase(w->win);
+                wprintw(w->win, "%s", instructionText);
         }
         else
         {
