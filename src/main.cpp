@@ -271,6 +271,7 @@ void one_measurement(int seconds, int sample_interval, char *workload)
 	report_process_update_display();
 	tuning_update_display();
 	wakeup_update_display();
+	instruction_update_display();
 	end_process_data();
 
 	global_power();
@@ -278,7 +279,6 @@ void one_measurement(int seconds, int sample_interval, char *workload)
 
 	show_report_devices();
 	report_show_open_devices();	                                                                                 
-	initialize_instruction();
 	report_devices();
 	display_devfreq_devices();
 	report_devfreq_devices();
