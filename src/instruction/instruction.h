@@ -20,4 +20,5 @@ public:
     char desc[4096];
 };
 
+class instruction_window* inst_window;
 #endif

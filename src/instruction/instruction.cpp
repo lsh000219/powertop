@@ -10,6 +10,7 @@
 #include "../report/report-maker.h"
 #include "../report/report-data-html"
 #include "instruction.h"
+#include "display.h"
 
 static bool should_clear = false;
 
@@ -31,7 +32,7 @@ void initialize_instruction(void) {
     class instruction_window* w;
 
     w = new instruction_window();
-    create_tab("Instruction", _("Instruction"), w, _(" <ESC> Exit |"));
+    create_tab("Instructions", _("Instructions"), w, _(" <ESC> Exit |"));
 
     init_instruction();
 
