@@ -11,8 +11,6 @@
 #include "../report/report-data-html"
 #include "instruction.h"
 
-
-static void sort_instruction(void);
 static bool should_clear = false;
 
 class instruction_window *inst_window;
