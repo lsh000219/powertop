@@ -127,6 +127,7 @@ static void __tuning_update_display(int cursor_pos)
 			wprintw(win, ">> ");
 		}
 		wprintw(win, "%s  %s\n", _(res), _(desc));
+		wprintw(win, "%s\n", "Tunable - 전력 소비를 줄이기 위해 시스템을 최적화하기 위한 제안을 제공합니다. 위쪽 및 아래 키를 사용하여 제안을 통해 이동하고, Enter 키를 사용하여 제안을 전환하거나 해제할 수 있습니다.");
 	}
 }
 
