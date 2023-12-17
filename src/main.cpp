@@ -271,7 +271,6 @@ void one_measurement(int seconds, int sample_interval, char *workload)
 	report_process_update_display();
 	tuning_update_display();
 	wakeup_update_display();
-	instruction_update_display();
 	end_process_data();
 
 	global_power();
@@ -447,6 +446,7 @@ int main(int argc, char **argv)
 	bindtextdomain (PACKAGE, LOCALEDIR);
 	textdomain (PACKAGE);
 #endif
+	instruction_update_display();
 	ui_notify_user = ui_notify_user_ncurses;
 	while (1) { /* parse commandline options */
 		c = getopt_long(argc, argv, "cC::r::i:qt:w:Vh", long_options, &option_index);
