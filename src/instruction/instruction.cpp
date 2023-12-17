@@ -33,7 +33,7 @@ void initialize_instruction(void) {
     class instruction_window* w;
 
     w = new instruction_window();
-    create_tab("Instruction", _("Instruction"), w, _(" <ESC> Exit |  <r> Window refresh"));
+    create_tab("Instruction", _("Instruction"), w, _(" <ESC> Exit "));
 
     init_instruction();
 
