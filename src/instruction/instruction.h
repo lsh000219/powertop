@@ -13,6 +13,8 @@ void instruction_update_display(void);
 
 void clear_instruction(void);
 
+void __instruction_update_display(void);
+
 extern vector<class Instruction *> instruction_all;
 
 class Instruction;
