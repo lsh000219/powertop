@@ -18,7 +18,12 @@ extern vector<class Instruction *> instruction_all;
 class Instruction;
 class Instruction {
 public:
-    char desc[4096];
+	char desc[4096];
+
+	Instruction(const char *desc)
+	{
+		strcpy(this->desc, desc);
+	}
 };
 
 class instruction_window* inst_window;
