@@ -26,14 +26,14 @@ public:
 };
 
 static void init_instruction(void) {                                           
-	show_instruction_tab();
+	instruction_update_display();
 }
 
 void initialize_instruction(void) {
     class instruction_window* w;
 
     w = new instruction_window();
-    create_tab("Instruction", _("Instruction"), w, _(" <ESC> Exit "));
+    create_tab("Instruction", _("Instruction"), w, _(" <ESC> Exit |"));
 
     init_instruction();
 
@@ -62,16 +62,45 @@ static void __instruction_update_display(int cursor_pos) {
     wmove(win, 2, 0);
 
     for (i = 0; i < instruction_all.size(); i++) {
-        if ((int)i != cursor_pos) {
-            wattrset(win, A_NORMAL);
-            wprintw(win, "   ");
-        }
-        else {
-            wattrset(win, A_REVERSE);
-            wprintw(win, ">> ");
-        }
-        wprintw(win, "%s\n", _(instruction_all[i].c_str()));
+    if ((int)i != cursor_pos) {
+        wattrset(win, A_NORMAL);
+        wprintw(win, "   ");
     }
+    else {
+        wattrset(win, A_REVERSE);
+        wprintw(win, ">> ");
+    }
+
+    if (i == 0) {
+        wprintw(win, "Overview - CPU에 웨이크업을 가장 자주 보내거나 시스템 전원을 가장 많이 사용하는 시스템 구성 요소 목록을 볼 수 있습니다.");
+    }
+    else if (i == 2) {
+        wprintw(win, "Usage - 초당 전력 사용량 / Events/s - 초당 event(Wakeup) 발생량 / Category - 분류 / Description - 설명");
+    }
+    else if (i == 4) {
+        wprintw(win, "Idle stats - 코어상태에 대한 다양한 정보를 표시합니다.");
+    }
+    else if (i == 6) {
+        wprintw(win, "Frequency stats - CPU 웨이크업 빈도를 표시합니다.");
+    }
+    else if (i == 8) {
+        wprintw(win, "Device stats - Overview 탭과 유사한 정보를 제공하지만 device에만 해당됩니다");
+    }
+    else if (i == 10) {
+        wprintw(win, "Usage - 전력 사용 비율 / Device name - 기기 이름");
+    }
+    else if (i == 12) {
+        wprintw(win, "Tunable - 전력 소비를 줄이기 위해 시스템을 최적화하기 위한 제안을 제공합니다.");
+    }
+    else if (i == 14) {
+        wprintw(win, "위쪽 및 아래 키를 사용하여 제안을 통해 이동하고, Enter 키를 사용하여 제안을 전환하거나 해제할 수 있습니다.");
+    }
+    else if (i == 16) {
+        wprintw(win, "전력소비 최적화 상태 / 제안");
+    }
+
+    wprintw(win, "\n");
+}
 }
 
 void instruction_update_display(void)
@@ -108,32 +137,3 @@ void instruction_window::window_refresh(void) {
 void clear_instruction() {
     instruction_all.clear();
 }
-
-void show_instruction_tab() {
-    WINDOW* win = get_ncurses_win("Instruction");
-
-    if (win) {
-        wclear(win);
-
-        const char* instructionText = R"(
-            Overview - CPU에 웨이크업을 가장 자주 보내거나 시스템 전원을 가장 많이 사용하는 시스템 구성 요소 목록을 볼 수 있습니다.
-            Usage - 초당 전력 사용량 / Events/s - 초당 event(Wakeup) 발생량 / Category - 분류 / Description - 설명
-
-            Idle stats - 코어상태에 대한 다양한 정보를 표시합니다.
-
-            Frequency stats - CPU 웨이크업 빈도를 표시합니다.
-
-            Device stats - Overview 탭과 유사한 정보를 제공하지만 device에만 해당됩니다
-            Usage - 전력 사용 비율 / Device name - 기기 이름
-
-            Tunable - 전력 소비를 줄이기 위해 시스템을 최적화하기 위한 제안을 제공합니다.
-            위쪽 및 아래 키를 사용하여 제안을 통해 이동하고, Enter 키를 사용하여 제안을 전환하거나 해제할 수 있습니다.
-            전력소비 최적화 상태 / 제안
-        )";
-
-        werase(inst_window->win);
-	wprintw(inst_window->win, "%s", instructionText);
-	wrefresh(inst_window->win);
-    }
-}
-
