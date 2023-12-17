@@ -7,11 +7,11 @@
 
 void init_instruction(void);
 
-extern void initialize_instruction(void);
+void initialize_instruction(void);
 
-extern void instruction_update_display(void);
+void instruction_update_display(void);
 
-extern void clear_instruction(void);
+void clear_instruction(void);
 
 extern vector<class Instruction *> instruction_all;
 
