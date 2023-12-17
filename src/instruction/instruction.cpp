@@ -33,18 +33,12 @@ void initialize_instruction(void) {
 
     w = new instruction_window();
     create_tab("Instructions", _("Instructions"), w, _(" <ESC> Exit |"));
-
     init_instruction();
-
-    w->cursor_max = instruction_all.size() - 1;
-
-    if (inst_window)
-        delete inst_window;
 
     inst_window = w;
 }
 
-static void __instruction_update_display(int cursor_pos) {
+static void __instruction_update_display() {
     WINDOW* win;
     unsigned int i;
 
@@ -80,7 +74,7 @@ void instruction_update_display(void)
 }
 
 void instruction_window::repaint(void) {
-    __instruction_update_display(cursor_pos);
+    __instruction_update_display();
 }
 
 void instruction_window::cursor_enter(void) {
