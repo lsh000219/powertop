@@ -164,14 +164,7 @@ WINDOW *get_ncurses_win(const char *name)
 	if (!w)
 		return NULL;
 
-	if(tab_name[tab] == "Instructions")
-	{
-		win = w->win;
-	}
-	else
-	{
-		win = w->win;
-
+	win = w->win;
 	return win;
 }
 
