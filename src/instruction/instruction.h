@@ -28,4 +28,5 @@ void clear_instruction(void);
 
 extern std::vector<Instruction> instruction_all;
 
+void show_instruction_tab();
 #endif
