@@ -272,7 +272,6 @@ void one_measurement(int seconds, int sample_interval, char *workload)
 	tuning_update_display();
 	wakeup_update_display();
 	end_process_data();
-	instruction_update_display();
 
 	global_power();
 	compute_bundle();
