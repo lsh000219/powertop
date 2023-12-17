@@ -13,14 +13,12 @@ extern void instruction_update_display(void);
 
 extern void clear_instruction(void);
 
-extern std::vector<Instruction> instruction_all;
+extern vector<class Instruction *> instruction_all;
 
 class Instruction {
 {
 public:
-    std::vector<std::string> lines;
-
-    Instruction() = default;
+    char desc[4096];
 }
 
 #endif
