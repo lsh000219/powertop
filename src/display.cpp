@@ -169,7 +169,7 @@ const char* instructionText = R"(
     Tunable - 전력 소비를 줄이기 위해 시스템을 최적화하기 위한 제안을 제공합니다.
     위쪽 및 아래 키를 사용하여 제안을 통해 이동하고, Enter 키를 사용하여 제안을 전환하거나 해제할 수 있습니다.
     전력소비 최적화 상태 / 제안
-)"
+)";
 
 WINDOW *get_ncurses_win(const char *name)
 {
