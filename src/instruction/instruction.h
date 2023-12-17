@@ -15,6 +15,7 @@ extern void clear_instruction(void);
 
 extern vector<class Instruction *> instruction_all;
 
+class Instruction;
 class Instruction {
 public:
     char desc[4096];

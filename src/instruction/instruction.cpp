@@ -48,7 +48,7 @@ static void __instruction_update_display(int cursor_pos) {
     WINDOW* win;
     unsigned int i;
 
-    win = get_ncurses_win("Instruction");
+    win = get_ncurses_win("Instructions");
 
     if (!win)
         return;
