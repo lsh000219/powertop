@@ -155,40 +155,18 @@ void show_tab(unsigned int tab)
 	prefresh(win->win, win->ypad_pos, win->xpad_pos, 1, 0, LINES - 3, COLS - 1);
 }
 
-const char* instructionText = R"(
-    Overview - CPU에 웨이크업을 가장 자주 보내거나 시스템 전원을 가장 많이 사용하는 시스템 구성 요소 목록을 볼 수 있습니다.
-    Usage - 초당 전력 사용량 / Events/s - 초당 event(Wakeup) 발생량 / Category - 분류 / Description - 설명
-
-    Idle stats - 코어상태에 대한 다양한 정보를 표시합니다.
-
-    Frequency stats - CPU 웨이크업 빈도를 표시합니다.
-
-    Device stats - Overview 탭과 유사한 정보를 제공하지만 device에만 해당됩니다
-    Usage - 전력 사용 비율 / Device name - 기기 이름
-
-    Tunable - 전력 소비를 줄이기 위해 시스템을 최적화하기 위한 제안을 제공합니다.
-    위쪽 및 아래 키를 사용하여 제안을 통해 이동하고, Enter 키를 사용하여 제안을 전환하거나 해제할 수 있습니다.
-    전력소비 최적화 상태 / 제안
-)";
-
 WINDOW *get_ncurses_win(const char *name)
 {
 	class tab_window *w;
 	WINDOW *win;
 
 	w= tab_windows[name];
-	if (!w)
+	if(!w)
+	{
 		return NULL;
+	}
 
-	if(w == "Instructions")
-	{
-		werase(w->win);
-		wprintw(w->win, "%s", instructionText);
-	}
-	else
-	{
-		win = w->win;
-	}
+	win = w->win;
 	return win;
 }
 
@@ -201,16 +179,7 @@ WINDOW *get_ncurses_win(int nr)
 	if (!w)
 		return NULL;
 
-	if(w == "Instructions")
-        {
-                werase(w->win);
-                wprintw(w->win, "%s", instructionText);
-        }
-        else
-        {
-                win = w->win;
-        }
-
+	win = w->win;
 	return win;
 }
 
