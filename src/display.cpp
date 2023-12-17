@@ -67,7 +67,7 @@ void init_display(void)
 
 	use_default_colors();
 
-	create_tab("Overview", _("Overview"));
+	create_tab("Overview1", _("Overview1"));
 	create_tab("Idle stats", _("Idle stats"));
 	create_tab("Frequency stats", _("Frequency stats"));
 	create_tab("Device stats", _("Device stats"));
