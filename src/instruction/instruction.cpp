@@ -11,81 +11,38 @@
 #include "../report/report-data-html"
 #include "instruction.h"
 
-std::vector<std::string> instruction_all;
 
-void instruction_window::repaint(void) {
-    __instruction_update_display(cursor_pos);
-}
+static void sort_instruction(void);
+static bool should_clear = false;
 
-void instruction_window::cursor_enter(void) {
-    if (cursor_pos >= 0 && cursor_pos < instruction_all.size()) {
-        std::string selectedInstruction = instruction_all[cursor_pos];
-    }
-}
+class instruction_window *inst_window;
 
-void instruction_window::expose(void) {
-    cursor_pos = 0;
-    repaint();
-}
+class instruction_window: public tab_window {
+public:
+	virtual void repaint(void);
+	virtual void cursor_enter(void);
+	virtual void expose(void);
+	virtual void window_refresh(void);
+};
 
-void instruction_window::window_refresh(void) {
-    clear_instruction();
-    should_clear = true;
-    init_instruction();
-}
-
-static void init_instruction(void) { 
-    show_instruction_tab();
+static void init_instruction(void) {                                           
+	show_instruction_tab();
 }
 
 void initialize_instruction(void) {
-    instruction_window* win = new instruction_window();
-    create_tab("Instruction", _("Instruction"), win, _(" <ESC> Exit | <Enter> Execute Instruction | <r> Window refresh"));
+    class instruction_window* w;
+
+    w = new instruction_window();
+    create_tab("Instruction", _("Instruction"), w, _(" <ESC> Exit |  <r> Window refresh"));
+
     init_instruction();
-    if (win) {
-        win->cursor_max = instruction_all.size() - 1;
-        if (newtab_window)
-            delete newtab_window;
-        newtab_window = win;
-    }
-}
 
-void instruction_update_display(void) {
-    class tab_window* wt = tab_windows["Instruction"];
-    if (!wt)
-        return;
-    wt->repaint();
-}
+    w->cursor_max = instruction_all.size() - 1;
 
-void clear_instruction() {
-    instruction_all.clear();
-}
+    if (inst_window)
+        delete inst_window;
 
-void show_instruction_tab() {
-    WINDOW* win = get_ncurses_win("Instruction");
-
-    if (win) {
-        wclear(win);
-
-        const char* instructionText = R"(
-            Overview - CPU에 웨이크업을 가장 자주 보내거나 시스템 전원을 가장 많이 사용하는 시스템 구성 요소 목록을 볼 수 있습니다.
-            Usage - 초당 전력 사용량 / Events/s - 초당 event(Wakeup) 발생량 / Category - 분류 / Description - 설명
-
-            Idle stats - 코어상태에 대한 다양한 정보를 표시합니다.
-
-            Frequency stats - CPU 웨이크업 빈도를 표시합니다.
-
-            Device stats - Overview 탭과 유사한 정보를 제공하지만 device에만 해당됩니다
-            Usage - 전력 사용 비율 / Device name - 기기 이름
-
-            Tunable - 전력 소비를 줄이기 위해 시스템을 최적화하기 위한 제안을 제공합니다.
-            위쪽 및 아래 키를 사용하여 제안을 통해 이동하고, Enter 키를 사용하여 제안을 전환하거나 해제할 수 있습니다.
-            전력소비 최적화 상태 / 제안
-        )";
-
-        mvwprintw(win, 0, 0, instructionText);
-        wrefresh(win);
-    }
+    inst_window = w;
 }
 
 static void __instruction_update_display(int cursor_pos) {
@@ -116,3 +73,67 @@ static void __instruction_update_display(int cursor_pos) {
         wprintw(win, "%s\n", _(instruction_all[i].c_str()));
     }
 }
+
+void instruction_update_display(void)
+{
+    class tab_window* w;
+
+    w = tab_windows["Instructions"];
+    if (!w)
+        return;
+    w->repaint();
+}
+
+void instruction_window::repaint(void) {
+    __instruction_update_display(cursor_pos);
+}
+
+void instruction_window::cursor_enter(void) {
+    if (cursor_pos >= 0 && cursor_pos < instruction_all.size()) {
+        std::string selectedInstruction = instruction_all[cursor_pos];
+    }
+}
+
+void instruction_window::expose(void) {
+    cursor_pos = 0;
+    repaint();
+}
+
+void instruction_window::window_refresh(void) {
+    clear_instruction();
+    should_clear = true;
+    init_instruction();
+}
+
+void clear_instruction() {
+    instruction_all.clear();
+}
+
+void show_instruction_tab() {
+    WINDOW* win = get_ncurses_win("Instruction");
+
+    if (win) {
+        wclear(win);
+
+        const char* instructionText = R"(
+            Overview - CPU에 웨이크업을 가장 자주 보내거나 시스템 전원을 가장 많이 사용하는 시스템 구성 요소 목록을 볼 수 있습니다.
+            Usage - 초당 전력 사용량 / Events/s - 초당 event(Wakeup) 발생량 / Category - 분류 / Description - 설명
+
+            Idle stats - 코어상태에 대한 다양한 정보를 표시합니다.
+
+            Frequency stats - CPU 웨이크업 빈도를 표시합니다.
+
+            Device stats - Overview 탭과 유사한 정보를 제공하지만 device에만 해당됩니다
+            Usage - 전력 사용 비율 / Device name - 기기 이름
+
+            Tunable - 전력 소비를 줄이기 위해 시스템을 최적화하기 위한 제안을 제공합니다.
+            위쪽 및 아래 키를 사용하여 제안을 통해 이동하고, Enter 키를 사용하여 제안을 전환하거나 해제할 수 있습니다.
+            전력소비 최적화 상태 / 제안
+        )";
+
+        werase(inst_window->win);
+	wprintw(inst_window->win, "%s", instructionText);
+	wrefresh(inst_window->win);
+    }
+}
+
