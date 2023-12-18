@@ -182,7 +182,7 @@ void report_devices(void)
 	}
 	
 	wprintw(win, "%s\n","Device stats - Overview 탭과 유사한 정보를 제공하지만 device에만 해당됩니다.");
-
+	wprintw(win, "%s\n","Usage - 전력 사용 비율 / Device name - 기기 이름");
 	if (pw > 0.0001 || show_power)
 		wprintw(win, "\n");
 	if (show_power)
