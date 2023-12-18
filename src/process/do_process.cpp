@@ -807,6 +807,9 @@ void process_update_display(void)
 
 	wmove(win, 1,0);
 
+	wprintw(win, "%s\n","Overview - CPU에 웨이크업을 가장 자주 보내거나 시스템 전원을 가장 많이 사용하는 시스템 구성 요소 목록을 볼 수 있습니다.");
+	wprintw(win, "%s\n", "Usage - 초당 전력 사용량 / Events/s - 초당 event(Wakeup) 발생량 / Category - 분류 / Description - 설명");
+
 #if 0
 	double sum;
 	calculate_params();
