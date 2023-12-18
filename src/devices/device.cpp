@@ -180,6 +180,8 @@ void report_devices(void)
 		wprintw(win, _("System baseline power is estimated at %sW\n"),
 				fmt_prefix(get_parameter_value("base power"), buf));
 	}
+	
+	wprintw(win, "%s\n","Device stats - Overview 탭과 유사한 정보를 제공하지만 device에만 해당됩니다.");
 
 	if (pw > 0.0001 || show_power)
 		wprintw(win, "\n");
