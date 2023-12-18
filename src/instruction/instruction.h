@@ -15,15 +15,15 @@ public:
     virtual void window_refresh(void);
 };
 
-public void init_instruction(void);
+void init_instruction(void);
 
-public void __initialize_instruction(void);
+void __initialize_instruction(void);
 
-public void instruction_update_display(void);
+void instruction_update_display(void);
 
-public void clear_instruction(void);
+void clear_instruction(void);
 
-public void instruction_update_display(void);
+void instruction_update_display(void);
 
 extern vector<class Instruction *> instruction_all;
 
@@ -33,5 +33,4 @@ public:
 	char desc[4096];
 };
 
-class instruction_window* inst_window;
 #endif
