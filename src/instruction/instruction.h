@@ -1,6 +1,7 @@
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
 
+#include "../display.h"
 #include <vector>
 #include <string>
 #include <ncurses.h>
