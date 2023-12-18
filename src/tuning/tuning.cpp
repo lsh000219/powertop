@@ -108,7 +108,7 @@ static void __tuning_update_display(int cursor_pos)
 	}
 
 	wmove(win, 2,0);
-	wprintw(win, "%s\n", "Tunable - 전력 소비를 줄이기 위해 시스템을 최적화>하기 위한 제안을 제공합니다.") 
+	wprintw(win, "%s\n", "Tunable - 전력 소비를 줄이기 위해 시스템을 최적화>하기 위한 제안을 제공합니다."); 
 	wprintw(win,"%s\n","위쪽 및 아래 키를 사용하여 제안을 통해 이동하고, Enter 키를 사용하여 제안을 전환하거나 해제할 수 있습니다.");
 
 	for (i = 0; i < all_tunables.size(); i++) {
