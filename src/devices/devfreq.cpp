@@ -283,7 +283,7 @@ void display_devfreq_devices(void)
 		wprintw(win, _(" No devfreq devices available"));
 		return;
 	}
-
+	wprintw(win, "%s\n", "Frequency stats - CPU 웨이크업 빈도를 표시합니다.");
 	for (i=0; i<all_devfreq.size(); i++) {
 
 		class devfreq *df = all_devfreq[i];
